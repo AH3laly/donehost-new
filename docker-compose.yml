@@ -3,7 +3,7 @@ version: '3.9'
 services:
   mongodb:
     image: mongo:7
-    container_name: mongodb
+    container_name: donehost-new-mongodb
     restart: always
     networks:
       - donehost-prod
@@ -12,8 +12,8 @@ services:
 
   golang-app:
     build:
-      context: ./golang
-    container_name: golang-app
+      context: ./
+    container_name: donehost-new-app
     restart: always
     ports:
       - "8601:8601"
