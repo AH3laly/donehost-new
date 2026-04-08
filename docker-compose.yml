@@ -1,0 +1,32 @@
+version: '3.9'
+
+services:
+  mongodb:
+    image: mongo:7
+    container_name: mongodb
+    restart: always
+    networks:
+      - donehost-prod
+    volumes:
+      - mongo-data:/data/db
+
+  golang-app:
+    build:
+      context: ./golang
+    container_name: golang-app
+    restart: always
+    ports:
+      - "8601:8601"
+    depends_on:
+      - mongodb
+    networks:
+      - donehost-prod
+    environment:
+      - MONGO_URI=mongodb://mongodb:27017
+
+networks:
+  donehost-prod:
+    driver: bridge
+
+volumes:
+  mongo-data:
