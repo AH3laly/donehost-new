@@ -6,7 +6,7 @@ import (
 )
 
 func handler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintln(w, "Hello from Donehost server 55")
+	fmt.Fprintln(w, "Hello from Donehost server 66")
 }
 
 func main() {
